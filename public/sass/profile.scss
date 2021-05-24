@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster'); 
+@import url('https://fonts.googleapis.com/css?family=PT Serif'); 
+	
+	.tags{
+		margin-top:5px;
+		display:flex;
+		justify-content:space-evenly;
+		flex-wrap:wrap;
+		.chip{
+			background-color:#e16120;
+			text-transform:uppercase;
+			font-family:"PT Serif";
+			color:#fff;
+		}
+	}
+
+	body{
+		background: whitesmoke;
+	}
+	[type="radio"]:not(:checked) {
+		 position: absolute;
+		 opacity: 0;
+		 pointer-events: none;
+	 }
+
+	/* IMAGE STYLES */
+	[type=radio] + img {
+		 cursor: pointer;
+	}
+
+	/* CHECKED STYLES */
+	[type=radio]:checked + img {
+		 border: 4px solid teal;
+	}
+	.main{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		background-color: whitesmoke;
+		width: 100%;
+	}
+	.main .sec1{
+		background: white;
+		box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+		margin: 1rem;
+		padding: 1rem;
+	}
+	.main .sec2 div.inner {
+		  background: white;
+		  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+		  margin: 1rem;
+		  padding: 1rem; 
+	}
+	.main .sec1{
+		flex: 1;
+		height: 100%;
+		position: sticky;
+		top: 1rem;
+	}
+	.main .sec2{
+		font-family: "Lobster";
+		flex: 1 3 40%;
+		color:teal;
+		min-width: 65% !important;
+		overflow:auto;
+	}
+	
+
+	@media (max-width: 750px){
+		.main .sec1{
+			position: relative;
+		}
+	}
+	#hel{
+		font-size:20px;
+	}
+	h3,h4{
+		text-align: center;
+		font-weight:bold;
+	}
+ 	.cardLike {
+        position: absolute;
+        top: 8px;
+	    left: 8px;
+		background-color: #e16120 !important;
+		box-shadow: 0 5px 8px rgba(0,0,0,0.3);
+    }
+.tags{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #e16120;
+	border-radius: 5px;
+	box-shadow: 0 5px 8px rgba(0,0,0,0.25);
+}
+
+img{
+	height:160px;
+	width:160px;
+	border-radius:100%;
+}
+.cuisine-slider,.allergy-slider,.diet-slider,.type-slider,.exclude-slider{
+	position:relative;
+	border:5px double lightgrey;
+	height:320px;
+	margin-bottom:10px;
+	.glide{
+		position:absolute;
+		text-align:center;
+		
+		label{
+			color:teal;
+			font-size:16px;
+		}
+		
+		.glide__arrow{
+			top:50%;
+		}
+	}
+}
+
+@media only screen and (max-width:600px){
+
+  img{
+    transform: scale(0.9);
+  }  
+
+}

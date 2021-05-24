@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+body {
+  font-family: "Lobster"; }
+
+.carousel.carousel-slider .carousel-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  color: teal;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+label {
+  color: teal; }
+
+[type="radio"]:not(:checked) {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none; }
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer; }
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  border: 4px solid teal; }
+
+.carousel {
+  height: 96vh !important;
+  position: relative;
+  background: url("/images/extra/back.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+  .carousel #straw {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 180px;
+    height: 180px; }
+    .carousel #straw img {
+      width: 100%;
+      height: 100%; }
+  .carousel #leaf {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 180px;
+    height: 180px; }
+    .carousel #leaf img {
+      width: 100%;
+      height: 100%; }
+
+.carousel .indicators .indicator-item {
+  background-color: teal;
+  height: 14px;
+  width: 14px; }
+
+.carousel .indicators .indicator-item.active {
+  background-color: #e16120; }
+
+.carousel.carousel-slider .carousel-item #a-info {
+  width: 100%;
+  color: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .carousel.carousel-slider .carousel-item #a-info .glide {
+    width: 65%; }
+
+#a-info img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%; }
+
+.glide__arrow {
+  top: 40%; }
+
+@media only screen and (max-width: 1140px) {
+  .carousel.carousel-slider .carousel-item #a-info .glide {
+    width: 75%; } }
+
+@media only screen and (max-width: 700px) {
+  .carousel {
+    height: 82vh !important; }
+  .carousel.carousel-slider .carousel-item #a-info .glide {
+    width: 100%; }
+  .carousel.carousel-slider .carousel-item #a-info img {
+    transform: scale(0.75); }
+  .carousel.carousel-slider .carousel-item h5 {
+    margin-top: 2rem; } }
+
+@media only screen and (max-width: 600px) {
+  .carousel.carousel-slider .carousel-item h5 {
+    margin-top: 2rem; }
+  .glide {
+    margin-top: -2rem; }
+  .carousel #leaf {
+    width: 110px;
+    height: 110px; }
+    .carousel #leaf img {
+      width: 100%;
+      height: 100%; }
+  .carousel #straw {
+    width: 110px;
+    height: 110px; }
+    .carousel #straw img {
+      width: 100%;
+      height: 100%; } }

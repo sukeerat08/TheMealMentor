@@ -1,0 +1,127 @@
+<%- include('./partials/head.ejs') %>
+<link rel="stylesheet" href="/css/search.css" >
+<link rel="stylesheet" href="/css/recipe.css">
+</head>
+
+<body>
+	
+<%- include('./partials/navigation.ejs') %>
+	<div class="main">
+			<div class="searchBox">
+				<div class="input-field">
+					<input type="text" id="autocomplete-input" class="autocomplete">
+					<label for="autocomplete-input">Type recipe, ingredient, product...</label>
+				</div>
+				<button class="btn waves-light" onclick="searchHandler();">
+					Search
+				</button>
+				<a class="btn waves-light btn-floating modal-trigger" href="#modal1">
+					<i class="material-icons"> tune </i>
+				</a>
+			</div>
+			<div class='searchTags'>
+				
+			</div>
+			<main class="recipe">
+				
+			</main>
+		</div>
+		<div id="modal1" class="modal bottom-sheet">
+			<div class="modal-content">
+				<h4> <i class="material-icons">tune</i> Filters</h4>
+				<div class="filterBox">
+					<div class="switches">
+						<div class="switch">
+							<label>
+							  Gluten-Free
+							  <input type="checkbox" name='diet' value='Gluten Free' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Ketogenic
+							  <input type="checkbox" name='diet' value='Ketogenic' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Vegan
+							  <input type="checkbox" name='diet' value='vegan' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Vegetarian
+							  <input type="checkbox" name='diet' value='vegetarian' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Main Course
+							  <input type="checkbox" name='type' value='main course' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Breakfast
+							  <input type="checkbox" name='type' value='breakfast' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						<div class="switch">
+							<label>
+							  Indian
+							  <input type="checkbox" name='cuisine' value='indian' class="switch-filter">
+							  <span class="lever"></span>
+							</label>
+						</div>
+						
+					</div>
+					<div class="ranges">
+						<p class="range-field">
+						  <label>MinProtien (g)</label>
+						  <input type="range" id="r1" min="0" max="100" name='minProtien'  class="range-filter"/>
+						</p>
+						<p class="range-field">
+							<label>MinCalories (cal)</label>
+						  <input type="range" id="r2" min="0" max="100" name='minCalories' class="range-filter"/>
+						</p>
+						<p class="range-field">
+							<label>MaxFat (g)</label>
+						  <input type="range" id="r3" min="0" max="100" name='maxFat' class="range-filter"/>
+						</p>
+						<p class="range-field">
+							<label>MaxCholesterol (mg)</label>
+						  <input type="range" id="r4" min="0" max="100" name='maxCholestrol' class="range-filter" />
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			  <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color: white;">Apply</a>
+			</div>
+		</div>
+
+		<script>
+			const acInput = document.getElementById('autocomplete-input');
+			var acInstance='', timer;
+			document.addEventListener('DOMContentLoaded', function() {
+				var filters = document.querySelectorAll('.modal');
+    			var instances = M.Modal.init(filters);
+				
+				M.Autocomplete.init(acInput);
+				acInstance = M.Autocomplete.getInstance(acInput);
+				// console.log(acInstance);
+			});
+			
+			const favRecipes = <%- JSON.stringify(currUser.favRecipes) %>;
+		</script>
+
+		<script src="/js/search.js"></script>
+
+<%- include('./partials/footer.ejs') %>

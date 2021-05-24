@@ -1,0 +1,27 @@
+<%- include('./partials/head.ejs') %>
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+/>
+<link rel="stylesheet" href="/css/recipe.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<%- include('./partials/navigation.ejs') %>
+	<div class="main-view">
+		<h3>Enjoy the taste of Eating Healthy</h3>
+		<div class="page-content recipe">
+			
+		</div>
+	</div>
+
+<script>
+	const random = <%=random%>;
+	const currOptions = <%- JSON.stringify(options) %>;
+	const favRecipes = <%- JSON.stringify(currUser.favRecipes) %>;
+</script>
+
+<script src="/js/pagination.js"></script>
+<%- include('./partials/footer.ejs') %>

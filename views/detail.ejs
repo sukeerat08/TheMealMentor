@@ -1,0 +1,287 @@
+<%- include('./partials/head.ejs') %>
+<link type="text/css" rel="stylesheet" href="/css/details.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css" integrity="sha512-YQlbvfX5C6Ym6fTUSZ9GZpyB3F92hmQAZTO5YjciedwAaGRI9ccNs4iw2QTCJiSPheUQZomZKHQtuwbHkA9lgw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css" integrity="sha512-wCwx+DYp8LDIaTem/rpXubV/C1WiNRsEVqoztV0NZm8tiTvsUeSlA/Uz02VTGSiqfzAHD4RnqVoevMcRZgYEcQ==" crossorigin="anonymous" />
+
+</head>
+
+<body>
+	<%- include('./partials/navigation.ejs') %>
+	
+	<div class="main">
+	<div class="top-sec">
+		<img class="imgBox" src="<%=data.image%>"/>
+		<div class="basic-info">
+			<h3>
+				<%= data.title %>
+				<button class="btn-floating pulse" onclick="favoriteHandler('<%=data.id%>','<%=data.title%>','<%=data.image%>')">
+					<i class="material-icons fav-icon"> <%if(currUser.favRecipes.includes(data.id.toString())) {%> favorite <%} else {%> favorite_border <%}%> </i>
+				</button>
+			</h3>
+			<blockquote>
+				<p class="creditsText"> <%= data.sourceName %> </p>
+			</blockquote>
+			<div class="imp-info">
+				<div>
+					<span><%=data.readyInMinutes%></span>
+					<p>readyInMinutes</p>
+				</div>
+				<div>
+					<span><%=data.servings%></span>
+					<p>servings</p>
+				</div>
+				<div>
+					<span><%=data.pricePerServing%></span>
+					<p>pricePerServing</p>
+				</div>
+				<div>
+					<span><%=data.healthScore%></span>
+					<p>healthScore</p>
+				</div>
+			</div>
+			<div class="info-tag">
+				<% if(data.glutenFree){%> <a class="waves-effect waves-light btn-small">glutenFree</a> <%}%>
+				<% if(data.ketogenic){%> <a class="waves-effect waves-light btn-small">ketogenic</a> <%}%>
+				<% if(data.cheap){%> <a class="waves-effect waves-light btn-small">cheap</a> <%}%>
+				<% if(data.vegan){%> <a class="waves-effect waves-light btn-small">vegan</a> <%}%>
+				<% if(data.vegetarian){%> <a class="waves-effect waves-light btn-small">vegetarian</a> <%}%>
+				<% if(data.veryHealthy){%> <a class="waves-effect waves-light btn-small">veryHealthy</a> <%}%>
+				<% if(data.veryPopular){%> <a class="waves-effect waves-light btn-small">veryPopular</a> <%}%>
+				<% if(data.whole30){%> <a class="waves-effect waves-light btn-small">whole30</a> <%}%>
+			</div>
+		</div>
+	</div>
+
+	<div class="bottom-sec">
+		<div class="col hide-on-small-only m3 l2 left">
+			<ul class="section table-of-contents">
+				<li><a href="#mainInfo">Main Information</a></li>
+				<li><a href="#nutrients"> Nutrients Analysis</a></li>
+				<li><a href="#taste">Taste Analysis </a></li>
+				<li><a href="#price">Price Analysis </a></li>
+				<li><a href="#tags"> Recipe Tags </a></li>
+				<li><a href="#related"> Related Recipes </a></li>
+			</ul>
+		</div>
+
+		<div class="right">
+			<div id="mainInfo" class="section scrollspy">
+				<div class="col s12">
+					<ul class="tabs">
+						<li class="tab col">
+							<a class="active" href="#ingredients"><h6>Ingredients</h6></a>
+						</li>
+						<li class="tab col ">
+							<a href="#instructions"><h6>Instructions</h6></a>
+						</li>
+						<li class="tab col">
+							<a href="#summary"><h6>Summary</h6></a>
+						</li>
+					</ul>
+				</div>
+				<div id="ingredients" class="tabBody">
+					<ul class="collection">
+						<% if(data.extendedIngredients) {%>
+						<% data.extendedIngredients.forEach(ing=>{ %>
+							<li class="collection-item ings">
+								<img src="https://spoonacular.com/cdn/ingredients_250x250/<%=ing.image%>" class="circle" />
+								<span class="title"> <%= ing.original %> </span>
+							</li>	
+						<% }) %>
+						<%}%>
+					</ul>
+				</div>
+				<div id="instructions" class="tabBody">
+					<ul class="collection">
+						<% if(!data.analyzedInstructions || data.analyzedInstructions.length===0 || data.analyzedInstructions[0].steps.length === 0) {%>
+						  <div class="chip">
+							Sorry! We Don't have instructions for this recipe.
+							<i class="close material-icons">close</i>
+						  </div>
+						<%} else {%>
+						<% data.analyzedInstructions[0].steps.forEach(item=>{ %>
+							<li class="collection-item">
+								<i class="material-icons">subdirectory_arrow_right</i> <%= item.step %>
+							</li>
+						<% }) %>
+						<%}%>
+					</ul>
+				</div>
+				<div id="summary" class="tabBody">
+					<ul class="collection">
+						<li class="collection-item">
+							<p id="summary-text">
+								
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<ul class="collapsible popout">
+				<li id="nutrients" class="section scrollspy" style="padding: 0;">
+					<div class="collapsible-header"><h6>Nutrients Analysis</h6></div>
+					<div class="collapsible-body">
+						<div class="graph">
+							<canvas id="nutrientsGraph1" ></canvas>
+						</div>
+						<div class="graph">
+							<canvas id="nutrientsGraph2" ></canvas>
+						</div>
+						<ul class="collapsible">
+							<li>
+								<div class="collapsible-header"><h6> All Nutrients value</h6> </div>
+							  <div class="collapsible-body">
+								<div id="nutrientsTags" style="display: flex; justify-content: space-between; flex-wrap: wrap;"></div>
+							  </div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li id="taste" class="section scrollspy" style="padding: 0;">
+					<div class="collapsible-header"><h6>Taste Graph</h6></div>
+					<div class="collapsible-body">
+						<div class="graph">
+							<canvas id="tasteGraph"></canvas>
+						</div>
+					</div>
+				</li>
+				<li id="price" class="section scrollspy" style="padding: 0;">
+					<div class="collapsible-header"><h6> Price Analysis </h6></div>
+					<div class="collapsible-body">
+						<div class="graph">
+							<canvas id="priceGraph"></canvas>
+						</div>
+						<div class="totalPrice">
+							
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+			<div id="tags" class="scrollspy section">
+				<% if(data.dishTypes && data.dishTypes.length !== 0){ %>
+				<div class="tagBox">
+					<div class="heading-line">
+						<h4>Dish Types</h4>
+						<span></span>
+					</div>
+					<div class="tags">
+						<% data.dishTypes.forEach(dt=>{ %>
+							<a class="tag waves-effect btn-small"> <%=dt%> </a>
+						<% }) %>
+					</div>
+				</div>
+				<%}%>
+				<% if(data.occasions && data.occasions.length !== 0){ %>
+				<div class="tagBox">
+					<div class="heading-line">
+						<h4>Occasions</h4>
+						<span></span>
+					</div>
+					<div class="tags">
+						<% data.occasions.forEach(occ=>{ %>
+							<a class="tag waves-effect btn-small"> <%=occ%> </a>
+						<% }) %>
+					</div>
+				</div>
+				<%}%>
+				<% if(data.cuisines && data.cuisines.length !== 0){ %>
+				<div class="tagBox">
+					<div class="heading-line">
+						<h4>cuisines</h4>
+						<span></span>
+					</div>
+					<div class="tags">
+						<% data.cuisines.forEach(c=>{ %>
+							<a class="tag waves-effect btn-small"> <%=c%> </a>
+						<% }) %>
+					</div>
+				</div>
+				<%}%>
+				<% if(data.diets && data.diets.length !== 0){ %>
+				<div class="tagBox">
+					<div class="heading-line">
+						<h4>Diets</h4>
+						<span></span>
+					</div>
+					<div class="tags">
+						<% data.diets.forEach(ds=>{ %>
+							<a class="tag waves-effect btn-small"> <%=ds%> </a>
+						<% }) %>
+					</div>
+				</div>
+				<%}%>
+			</div>
+		</div>
+	</div>
+
+	<div class="related-recipes section scrollspy" id="related">
+		<div id="related-slider">
+			<h2>Related recipes</h2>
+			<%if(arr.length===0){%>
+				<h4>No related recipes found</h4>
+			<%}else{%>
+				<div class="glide related">
+				<div class="glide__track" data-glide-el="track">
+					<ul class="glide__slides">
+
+						<%for(item of arr){%>
+						<a href="/show/<%=item.id%>" class="card_link">
+							<li class="glide__slide">
+								<img src="/images/extra/related.PNG">
+								<p><%=item.title%></p>
+							</li>
+						</a>
+						<%}%>
+
+					</ul>
+				</div>
+
+				<div class="glide__arrows" data-glide-el="controls">
+				<button class="glide__arrow glide__arrow--left l" data-glide-dir="<"><i class=" material-icons">chevron_left</i></button>
+				<button class="glide__arrow glide__arrow--right r" data-glide-dir=">"><i class=" material-icons">chevron_right</i></button>
+				</div>
+				</div>
+			<%}%>
+			
+		</div>
+		
+	</div>
+		
+</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+   <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script> 
+
+	<script>
+       var options={
+            type: 'slider',
+                perView: 4,
+                breakpoints:{
+                1100:{
+                    perView:3
+                },
+                650:{
+                    perView:2,
+                    gap:8
+                }
+            }
+        }
+        var slider=new Glide('.related',options);
+        slider.mount();
+   </script>
+
+<script type="text/javascript">
+	const collaps = document.querySelectorAll('.collapsible');
+	document.addEventListener('DOMContentLoaded', function () {
+	    M.ScrollSpy.init(document.querySelectorAll('.scrollspy'));
+		M.Tabs.init(document.querySelectorAll('.tabs'));
+		M.Collapsible.init(collaps, { accordion: false });
+	});
+	const summary = "<%= data.summary %>";
+	const id = "<%= data.id %>";
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js"></script>-
+<script src="/js/detail.js"></script>	
+	
+<%- include('./partials/footer.ejs') %>

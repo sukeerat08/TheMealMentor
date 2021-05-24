@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster'); 
+@import url('https://fonts.googleapis.com/css?family=PT Serif'); 
+
+#related-slider{
+	display:flex;
+	flex-direction:column;
+	
+	h2,h4{
+		padding-left:5%;
+		color: #e16120;
+		text-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+		font-family:"Lobster";
+	}
+	
+	.glide{
+		text-align:center;
+		width:90%;
+		
+		p{
+			color: #e16120;
+			font-size:16px;
+			white-space: nowrap;
+			overflow:hidden;
+			text-overflow: ellipsis;
+		}
+		img{
+			width:160px;
+			height:160px;
+			border:1px solid darkgrey;
+			border-radius:100%;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.36);
+		}
+		
+		.glide__arrow{
+			top:40%;
+		}
+	}
+}
+
+.main {
+	background-color: white;
+	padding: 10px;
+	min-height: 100vh;
+}
+.top-sec {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px;
+	border-radius: 3px;
+	border-bottom: 2px solid lightgrey;
+	padding-bottom: 50px;
+}
+.imgBox {
+	flex: 0.4;
+	max-width: 100%;
+	max-height: 500px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.36);
+	border-radius: 15px;
+}
+.basic-info {
+	flex: 0.52;
+	min-width: 300px;
+}
+.basic-info h3 {
+	font-weight: bold;
+	color: #e16120;
+	text-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+	font-family:"Lobster";
+}
+.basic-info .creditText {
+	color: lightgrey;
+	font-size: 1.3rem;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.imp-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.imp-info div {
+	text-align: center;
+	padding: 10px;
+	width: 136px;
+	border-right: 1px solid lightgrey;
+}
+.imp-info div:last-of-type {
+	border-right: none;
+}
+.imp-info div span {
+	font-size: 2.8rem;
+	font-weight: 200;
+}
+.imp-info div p {
+	font-size: 1.1rem;
+	font-weight: 200;
+	color: grey;
+}
+.info-tag {
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.info-tag a {
+	margin: 5px 10px;
+}
+.waves-effect.waves-light {
+	border-radius: 25px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.tabs{
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+.tabs li a h6 {
+	color: teal;
+}
+.tabs::-webkit-scrollbar{
+	display: none;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+	background-color: #e0f2f1 !important;
+}
+.collapsible h6, h1 {
+	font-weight: bold;
+}
+.collapsible .collapsible-body img {
+	max-width: 100%;
+}
+.bottom-sec {
+	padding: 10px;
+	padding-top: 50px;
+	display: flex;
+	justify-content: space-around;
+	border-radius: 3px;
+	border-bottom: 2px solid lightgrey;
+	padding-bottom: 50px;
+}
+.bottom-sec .left {
+	position: sticky;
+	align-self: flex-start;
+	flex: 0.3 2 160px;
+	top: 50px;
+}
+.bottom-sec .right {
+	flex: 0.6;
+}
+.collection-item{
+	font-size: 1.1rem;
+}
+.collection-item.ings{
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+.collection-item.ings img{
+	height: 50px;
+	width: 50px;
+}
+.collection-item.ings span{
+	font-weight: bold;
+	padding-left: 30px;
+}
+.heading-line {
+	display: flex;
+	align-items: center;
+	margin: 20px auto;
+}
+.heading-line h4 {
+	margin: 0;
+}
+.heading-line span {
+	height: 1px;
+	background-color: lightgrey;
+	margin: 0 5px;
+	flex: 1;
+}
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+}
+.tag.btn-small {
+	border-radius: 25px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin: 5px;
+	background-color: #e16120;
+}
+.related-recipes {
+	padding-top: 15px;
+	height: 500px;
+	margin-left:10%;
+}
+.graph{
+	width: 100%;
+	position: relative;
+	/* max-height: 600px; */
+}
+.chip{
+	box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+	color: whitesmoke !important;
+	background-color: #e16120 !important;
+}
+.totalPrice .chip{
+	margin-top: 15px;
+}
+
+@media (max-width: 900px) {
+	.main{
+		padding: 0;
+	}
+	.top-sec, .bottom-sec{
+		justify-content: center;
+	}
+	.imgBox {
+		flex: 1;
+		padding: 0;
+	}
+	.basic-info {
+		flex: 1;
+		padding: 0 5px;
+	}
+	.imp-info div {
+		width: 125px;
+	}
+	.imp-info div:last-of-type {
+		border-right: 1px solid lightgrey;
+	}
+	.bottom-sec .right {
+		flex: 1;
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 500px){
+	
+	#related-slider{
+	.glide{
+		
+		img{
+			transform:scale(0.9);
+		}
+		
+	}
+}
+	
+}

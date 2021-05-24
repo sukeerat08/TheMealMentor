@@ -1,0 +1,80 @@
+.searchBox {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.input-field>label{
+	left: 15px !important;
+}
+#autocomplete-input {
+	border: 2px solid #26a69a !important;
+	border-radius: 25px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 0 !important;
+	padding: 0 10px;
+	min-width: 160px;
+}
+.input-field {
+	flex: 1;
+	margin: auto 10px;
+	margin-right: 25px;
+}
+.btn {
+	margin: auto 5px;
+	position: relative;
+}
+.filterBox {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+}
+.filterBox .switches,
+.ranges {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.switch {
+	margin: 20px;
+}
+.range-field {
+	margin: 30px;
+}
+input[type=range] {
+	border-radius: 6px;
+}
+.switch label,
+.range-field label {
+	font-weight: bold;
+	font-size: 1.1rem;
+	color: white;
+}
+.modal-content {
+	background-color: #169098;
+}
+.modal-content {
+	color: white;
+}
+.modal-footer {
+	background-color: teal !important;
+}
+.searchTags{
+	display: flex;
+	margin: 10px 20px;
+	flex-wrap: wrap;
+}
+.chip{
+	box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+	background-color: #e16120 !important;
+	color: whitesmoke !important;
+}
+
+@media (max-width: 325px){
+	#autocomplete-input {
+		margin-right: 10px;
+		width: 100%;
+		max-width: 100%;
+	}
+}

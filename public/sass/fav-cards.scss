@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster'); 
+
+a{
+	color: inherit;
+}
+.recipe{
+    display:flex;
+    flex-direction:row;
+    width:90%;
+    margin-left:5%;
+	padding-left:5%;
+    flex-wrap: wrap;
+    align-content: space-around;
+    div
+    {
+      width:30%;
+      margin-right: 2%;
+      margin-bottom:3%;
+      .card__like {
+        width: 18px;
+    }
+    .card__img {
+      visibility: hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 170px;
+        background-color:cyan;
+      border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    }
+    
+    .card__info-hover {
+        position: absolute;
+        padding: 16px;
+      width: 100%;
+      opacity: 0;
+      top: 0;
+    }
+    
+    .card__img--hover {
+      transition: 0.2s all ease-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 170px;
+      position: absolute;
+      border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+      
+    }
+    .card {
+      transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+      background-color: #fff;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.3);
+    }
+    .card:hover {
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.3);
+        transform: scale(1.10, 1.10);
+    }
+    
+    .card__info {
+        z-index: 2;
+        background-color: #fff;
+        border-bottom-left-radius: 12px;
+    	border-bottom-right-radius: 12px;
+    	width: 100%;
+    }
+    p{
+      width: 100%;
+	  padding: 0 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: "Lobster";
+      font-weight: 500;
+	  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	  color: #f65d08;
+	  font-size: 1.1rem;
+	  letter-spacing: 0.5px;
+        .card__title {
+            width:100%;
+            margin-top: 2px;
+            padding: 16px 24px 24px 24px;
+        }
+    }
+   
+    
+    .card:hover .card__img--hover {
+        height: 100%;
+        opacity: 0.3;
+    }
+    
+    .card:hover .card__info {
+        background-color: transparent;
+        position: relative;
+    }
+    
+    .card:hover .card__info-hover {
+        opacity: 1;
+    }
+    
+    }
+}
+
+@media screen and (max-width:950px){
+    .recipe{
+        margin-left:7%;
+        width:85%;
+    }
+}
+@media screen and (max-width:800px){
+    .recipe{
+        margin-left:6%;
+        width:90%;
+    }
+}
+@media screen and (max-width:750px){
+    .recipe{
+       margin-left: 7%;
+     div{
+       width:40%;
+   }
+   }
+   }
+@media screen and (max-width:680px){
+ .recipe{
+  display: flex;
+  margin-left: -15%;
+  flex-wrap: wrap;
+  flex-direction:column;
+  align-content:space-around;
+  div{
+    width:60%;
+	}
+}
+	.recipe div .card{
+		width: 50vw
+	}
+}
+
+
+@media screen and (max-width:580px){
+
+	.recipe div .card{
+		width: 77vw
+	}
+}

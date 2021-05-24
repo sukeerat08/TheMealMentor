@@ -1,0 +1,161 @@
+<%- include('./partials/head.ejs') %>
+<link rel="stylesheet" href="/css/login.css" />
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="container" id="container">
+	<% if(error && error.length>0 ){ %>
+		<span class="flash-msg hide-msg error"> <%= error %> </span>
+	<% } %> <% if( success && success.length>0 ){ %>
+		<div class="flash-msg hide-msg success"><%= success %></div>
+	<% } %>
+	<div class="row">
+		<!-- Sign Up -->
+		<div class="col align-center flex-col sign-up">
+			<div class="form-wrapper align-center">
+				<form class="form sign-up" action="/register" method="POST">
+					<div class="input-group">
+						<i class="bx bxs-user"></i>
+						<input type="text" placeholder="Full Name" name="fullName" />
+					</div>
+					<div class="input-group">
+						<i class="bx bx-mail-send"></i>
+						<input type="email" placeholder="Email" name="email" />
+					</div>
+					<div class="input-group">
+						<i class="bx bxs-lock-alt"></i>
+						<input type="password" placeholder="Password" name="password" />
+					</div>
+					<!-- <div class="input-group">
+						<i class="bx bxs-lock-alt"></i>
+						<input type="password" placeholder="Confirm password"/>
+					</div> -->
+					<button>Sign up</button>
+					<p>
+						<span>Already have an account?</span>
+						<b id="sign-in">Sign in here</b>
+					</p>
+					
+					<a href="/auth/google">
+						<div class="google-btn">
+							<div class="google-icon-wrapper">
+								<img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+								/>
+							</div>
+							<p class="btn-text"><b>Sign in with google</b></p>
+						</div>
+					</a>
+				</form>
+			</div>
+
+		</div>
+		<!-- End Sign Up -->
+		<!-- Sign In -->
+		<div class="col align-center flex-col sign-in">
+			<div class="form-wrapper align-center">
+				<form class="form sign-in" action="/login" method="POST">
+					<div class="input-group">
+						<i class="bx bx-mail-send"></i>
+						<input type="text" placeholder="Email" name="email" />
+					</div>
+					<div class="input-group">
+						<i class="bx bxs-lock-alt"></i>
+						<input type="password" placeholder="Password" name="password" />
+					</div>
+					<button>Sign in</button>
+					<p>
+						<span> Don't have an account? </span>
+						<b id="sign-up">Sign up here</b>
+					</p>
+					<a href="/auth/google">
+						<div class="google-btn">
+						  <div class="google-icon-wrapper">
+							<img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+						  </div>
+						  <p class="btn-text"><b>Sign in with google</b></p>
+						</div>
+					</a>
+				</form>
+			</div>
+		</div>
+		<!-- End Sign In -->
+	</div>
+	<!-- End Row -->
+	<!-- Content Section -->
+	<div class="row content-row">
+		<!-- Sign In Content -->
+		<div class="col align-items flex-col">
+			<div class="text sign-in">
+				<h2>Welcome Back</h2>
+				<p>
+					Welcome back Food Lovers.Login and search new Recipes and cook tasty and delicious items.
+				</p>
+			</div>
+			<div class="img sign-in">
+				<img src="/images/meal-login1.png" alt="" />
+			</div>
+		</div>
+
+		<!-- Sign Up Content -->
+		<div class="col align-items flex-col">
+			<div class="img sign-up">
+				<img src="/images/meal-login.png" alt="" />
+			</div>
+			<div class="text sign-up">
+				<h2>Join with us</h2>
+				<p>
+					We provide Awesome Food Recipes with every detail. So join with us and cook and learn for your family and provide your children with awesome taste...
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Container -->
+
+<!-- Script -->
+<script>
+	const container = document.getElementById('container');
+	const signIn = document.getElementById('sign-in');
+	const signUp = document.getElementById('sign-up');
+
+	setTimeout(() => {
+		container.classList.add('sign-in');
+	}, 200);
+
+	const toggle = () => {
+		container.classList.toggle('sign-in');
+		container.classList.toggle('sign-up');
+	};
+
+	signIn.addEventListener('click', toggle);
+	signUp.addEventListener('click', toggle);
+	
+</script>
+	
+<script>
+	const fm = document.querySelector('.flash-msg');
+	var error = "<%= error %>";
+	var success = "<%= success %>";
+	console.log(error, success);
+	if(error && error.length > 0){
+		fm.classList.remove('hide-msg');
+		fm.classList.add('show-msg');
+		setTimeout(()=>{
+			fm.classList.add('hide-msg');
+			fm.classList.remove('show-msg');
+		},8000)
+	}
+	if(success && success.length > 0 ){
+		fm.classList.remove('hide-msg');
+		fm.classList.add('show-msg');
+		setTimeout(()=>{
+			fm.classList.add('hide-msg');
+			fm.classList.remove('show-msg');
+		},8000)
+	}
+</script>
+
+</body>
+</html>

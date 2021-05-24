@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<nav class="teal lighten-1">
+	<div class="nav-wrapper">
+		<a href="/" class="brand-logo"> <img src='/images/extra/Logo.png'> <span>The Meal Mentor</span> </a>
+		<a href="#" data-target="mobile-demo" class="sidenav-trigger">
+			<i class="material-icons">menu</i>
+		</a>
+		<ul class="right hide-on-med-and-down">
+			<li><a href="/search"> <i class="material-icons">search</i></a></li>
+			<li>
+				<a class="dropdown-trigger1" href="#!" style="outline: none;" data-target="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a>
+			</li>
+			<li><a href="/user/me"><%= currUser.name %></a></li>
+			<li><a href="/logout">logout</a></li>
+		</ul>
+	</div>
+</nav>
+
+<ul id="dropdown1" class="dropdown-content">
+	<li><a href="/viewall/?type=main%20course&custom=false">Chef's Special</a></li>
+	<li><a href="/viewall/?type=dessert&custom=false">Dessert</a></li>
+	<li><a href="/viewall/?type=salad&custom=false">Salad</a></li>
+	<li><a  href="/viewall/?type=snack&custom=false">Snacks</a></li>
+	<li><a href="/viewall/?type=drink&custom=false">Beverages</a></li>
+</ul>
+
+<ul class="sidenav" id="mobile-demo">
+	 <li>
+		 <div class="user-view">
+		  <div class="background"> </div>
+		  <a href="#user"><img class="circle" src="/images/extra/Logo.png"></a>
+		  <b><span class=" name">Meal Mentor</span></b>
+		  <b><span class=" email">yourmealmentor@gmail.com</span></b>
+		</div>
+	</li>
+	<li><a href="/search"><i class="material-icons">search</i> Search </a></li>
+	<li class="no-padding">
+		<ul class="collapsible collapsible-accordion">
+			<li>
+				<a class="collapsible-header">Categories<i class="material-icons">arrow_drop_down</i></a>
+				<div class="collapsible-body">
+					<ul>
+						<li><a href="/viewall/?type=main%20course&custom=false">Chef's Special</a></li>
+						<li><a href="/viewall/?type=dessert&custom=false">Dessert</a></li>
+						<li><a href="/viewall/?type=salad&custom=false">Salad</a></li>
+						<li><a  href="/viewall/?type=snack&custom=false">Snacks</a></li>
+						<li><a href="/viewall/?type=drink&custom=false">Beverages</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li><a href="/user/me"><%= currUser.name %></a></li>
+	<li><a href="/logout">logout</a></li>
+</ul>
+
+<% if(error && error.length>0 ){ %>
+	<span class="flash-msg hide-msg error"> <%= error %> </span>
+<% } %> <% if( success && success.length>0 ){ %>
+	<div class="flash-msg hide-msg success"><%= success %></div>
+<% } %>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const elems = document.querySelectorAll('.sidenav');
+		const instances = M.Sidenav.init(elems,{draggable: true});
+		M.Dropdown.init(document.querySelector('.dropdown-trigger1'),{hover: true});
+		var collapsibleElem = document.querySelector('.collapsible');
+		var collapsibleInstance = M.Collapsible.init(collapsibleElem);
+	});
+	
+</script>
+
+<script>
+	const fm = document.querySelector('.flash-msg');
+	var error = "<%= error %>";
+	var success = "<%= success %>";
+	console.log(error, success);
+	if(error && error.length > 0){
+		fm.classList.remove('hide-msg');
+		fm.classList.add('show-msg');
+		setTimeout(()=>{
+			fm.classList.add('hide-msg');
+			fm.classList.remove('show-msg');
+		},8000)
+	}
+	if(success && success.length > 0 ){
+		fm.classList.remove('hide-msg');
+		fm.classList.add('show-msg');
+		setTimeout(()=>{
+			fm.classList.add('hide-msg');
+			fm.classList.remove('show-msg');
+		},8000)
+	}
+</script>

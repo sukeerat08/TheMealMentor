@@ -1,0 +1,108 @@
+<%- include('./partials/head.ejs') %>
+
+<!--glide-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css" integrity="sha512-YQlbvfX5C6Ym6fTUSZ9GZpyB3F92hmQAZTO5YjciedwAaGRI9ccNs4iw2QTCJiSPheUQZomZKHQtuwbHkA9lgw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css" integrity="sha512-wCwx+DYp8LDIaTem/rpXubV/C1WiNRsEVqoztV0NZm8tiTvsUeSlA/Uz02VTGSiqfzAHD4RnqVoevMcRZgYEcQ==" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="/css/home.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+	
+	<%- include('./partials/navigation.ejs') %>
+	
+
+    <div id="dish-slider">
+
+        <div id="straw"> 
+            <img src="/images/extra/strawberry.webp" alt="">
+        </div>
+      
+        <div id="leaf">
+            <img src="/images/extra/leaf.webp" alt="">
+        </div>
+		
+		<% var url="/viewall/?custom="+check%>
+		<% if(!check) {%>
+			<%if(c){%>
+				<% url +="&cuisine="+c%>
+			<%}%>
+			<%if(d){%>
+				<% url +="&diet="+d%>
+			<%}%>
+			<%if(t){%>
+				<% url +="&type="+t%>
+			<%}%>
+			<%if(e){%>
+				<% url +="&excludeIngredients="+e%>
+			<%}%>
+			<%if(i){%>
+				<% url +="&intolerances="+i%>
+			<%}%>
+		<%}%>
+  		<div class="head-box">
+			<p id="title">Customized recipies</p>
+			<a href="<%=url%>" id="a-tag">View All</a>
+		</div>
+	
+        <div class="glide home-glide">
+            <div class="glide__track" data-glide-el="track">
+
+                <ul class="glide__slides">
+            
+                    <%for(item of arr){%>
+					<a href="/show/<%=item.id%>" class="card_link">
+                        <li class="glide__slide">
+                            <img src="<%=item.image%>">
+                            <p><%=item.title%></p>
+                        </li>
+					</a>	
+                    <%}%>
+            
+                </ul>
+
+            </div>
+            
+            <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left l" data-glide-dir="<"><i class=" material-icons">chevron_left</i></button>
+            <button class="glide__arrow glide__arrow--right r" data-glide-dir=">"><i class=" material-icons">chevron_right</i></button>
+            </div>
+        </div>
+    </div>
+
+	<%- include('./recipe.ejs') %>
+     
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+   <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script> 
+
+   <script>
+       var options={
+            type: 'slider',
+                perView: 4,
+                breakpoints:{
+                1100:{
+                    perView:3
+                },
+                650:{
+                    perView:2,
+                    gap:8
+                }
+            }
+        }
+        var slider=new Glide('.home-glide',options);
+        slider.mount();
+	   
+	   const favRecipes = <%- JSON.stringify(currUser.favRecipes) %>;
+	   
+   </script>
+	
+  <script src="/js/categories.js"></script>
+	
+	
+<%- include('./partials/footer.ejs') %>

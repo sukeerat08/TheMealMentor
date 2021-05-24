@@ -1,0 +1,436 @@
+<!---- Compiled and minified CSS and js-->
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<title><%=title%></title>
+
+		<!--glide-->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css"
+			integrity="sha512-YQlbvfX5C6Ym6fTUSZ9GZpyB3F92hmQAZTO5YjciedwAaGRI9ccNs4iw2QTCJiSPheUQZomZKHQtuwbHkA9lgw=="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css"
+			integrity="sha512-wCwx+DYp8LDIaTem/rpXubV/C1WiNRsEVqoztV0NZm8tiTvsUeSlA/Uz02VTGSiqfzAHD4RnqVoevMcRZgYEcQ=="
+			crossorigin="anonymous"
+		/>
+
+		<!-- JQuery UI -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+		/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<link rel="stylesheet" href="/css/slider.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
+	<body>
+		<div class="carousel carousel-slider main-slider">
+			<div id="straw">
+				<img src="/images/extra/strawberry.webp" alt="" />
+			</div>
+
+			<div id="leaf">
+				<img src="/images/extra/leaf.webp" alt="" />
+			</div>
+
+			<form action="/save-options" method="POST">
+				<a class="carousel-item" href="#one!">
+					<div id="a-info">
+						<h4>What is your favourite cuisine?</h4>
+						<div class="glide cuisine">
+							<div class="glide__track" data-glide-el="track">
+								<ul class="glide__slides">
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="American" />
+											<img src="/images/cuisines/american.png" alt="" />
+											<p>American</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Italian" />
+											<img src="/images/cuisines/italian.png" alt="" />
+											<p>Italian</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Chinese" />
+											<img src="/images/cuisines/chinese.png" alt="" />
+											<p>Chinese</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Mexican" />
+											<img src="/images/cuisines/mexican.png" alt="" />
+											<p>Mexican</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Thai" />
+											<img src="/images/cuisines/thai.png" alt="" />
+											<p>Thai</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="French" />
+											<img src="/images/cuisines/french.png" alt="" />
+											<p>French</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Spanish" />
+											<img src="/images/cuisines/spanish.png" alt="" />
+											<p>Spanish</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="cuisine" value="Indian" />
+											<img src="/images/cuisines/indian.png" alt="" />
+											<p>Indian</p>
+										</label>
+									</li>
+								</ul>
+							</div>
+
+							<div class="glide__arrows" data-glide-el="controls">
+								<button
+									class="glide__arrow glide__arrow--left l"
+									data-glide-dir="<"
+								>
+									<i class="material-icons">chevron_left</i>
+								</button>
+								<button
+									class="glide__arrow glide__arrow--right r"
+									data-glide-dir=">"
+								>
+									<i class="material-icons">chevron_right</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="carousel-item" href="#two!">
+					<div id="a-info">
+						<h4>Do you have any allergies?</h4>
+						<div class="glide allergies">
+							<div class="glide__track" data-glide-el="track">
+								<ul class="glide__slides">
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="allergies" value="Dairy" />
+											<img src="/images/allergies/diary.jpg" />
+											<p>Dairy Products</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="allergies" value="Gluten" />
+											<img src="/images/allergies/gluten.jpg" />
+											<p>Gluten</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="allergies" value="Soy" />
+											<img src="/images/allergies/soy.jpg" />
+											<p>Soy</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="allergies" value="Egg" />
+											<img src="/images/exclude/egg.jpg" />
+											<p>Egg</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="allergies" value="Seafood" />
+											<img src="/images/allergies/seafood.jpg" />
+											<p>Seafood</p>
+										</label>
+									</li>
+								</ul>
+							</div>
+
+							<div class="glide__arrows" data-glide-el="controls">
+								<button
+									class="glide__arrow glide__arrow--left l"
+									data-glide-dir="<"
+								>
+									<i class="material-icons">chevron_left</i>
+								</button>
+								<button
+									class="glide__arrow glide__arrow--right r"
+									data-glide-dir=">"
+								>
+									<i class="material-icons">chevron_right</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="carousel-item" href="#three!">
+					<div id="a-info">
+						<h4>What diet do you follow?</h4>
+						<div class="glide diet">
+							<div class="glide__track" data-glide-el="track">
+								<ul class="glide__slides">
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="diet" value="Gluten Free" />
+											<img src="/images/Diet/gluten-free.jpg" />
+											<p>Gluten Free</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="diet" value="Ketogenic" />
+											<img src="/images/Diet/keto.jpg" />
+											<p>Ketogenic</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="diet" value="Vegetarian" />
+											<img src="/images/Diet/veg.jpg" />
+											<p>Vegetarian</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="diet" value="Vegan" />
+											<img src="/images/Diet/vegan.jpg" />
+											<p>Vegan</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="diet" value="Paleo" />
+											<img src="/images/Diet/non-veg.webp" />
+											<p>Non-Vegetarian</p>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div class="glide__arrows" data-glide-el="controls">
+								<button
+									class="glide__arrow glide__arrow--left l"
+									data-glide-dir="<"
+								>
+									<i class="material-icons">chevron_left</i>
+								</button>
+								<button
+									class="glide__arrow glide__arrow--right r"
+									data-glide-dir=">"
+								>
+									<i class="material-icons">chevron_right</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="carousel-item" href="#four!">
+					<div id="a-info">
+						<h4>What type of meal you want?</h4>
+						<div class="glide type">
+							<div class="glide__track" data-glide-el="track">
+								<ul class="glide__slides">
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="main course" />
+											<img src="/images/type/main course.jpg" />
+											<p>Main-course</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="side dish" />
+											<img src="/images/type/side dish.jpg" />
+											<p>Side-dish</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="dessert" />
+											<img src="/images/type/dessert.jpg" />
+											<p>Dessert</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="appetizer" />
+											<img src="/images/type/appetizer.jpg" />
+											<p>Appetizers</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="salad" />
+											<img src="/images/type/salad.jpg" />
+											<p>Salad</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="type" value="beverage" />
+											<img src="/images/type/beverage.jpg" />
+											<p>Beverages</p>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div class="glide__arrows" data-glide-el="controls">
+								<button
+									class="glide__arrow glide__arrow--left l"
+									data-glide-dir="<"
+								>
+									<i class="material-icons">chevron_left</i>
+								</button>
+								<button
+									class="glide__arrow glide__arrow--right r"
+									data-glide-dir=">"
+								>
+									<i class="material-icons">chevron_right</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<a class="carousel-item" href="#five!">
+					<div id="a-info">
+						<h4>Any ingredients you don't want to see in your recipes?</h4>
+						<div class="glide exclude">
+							<div class="glide__track" data-glide-el="track">
+								<ul class="glide__slides">
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex1" value="egg" />
+											<img src="/images/exclude/egg.jpg" />
+											<p>Eggs</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex2" value="onion" />
+											<img src="/images/exclude/onion.jpg" />
+											<p>Onion</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex3" value="garlic" />
+											<img src="/images/exclude/garlic.jpg" />
+											<p>Garlic</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex4" value="beef" />
+											<img src="/images/exclude/beef.jpg" />
+											<p>Beef</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex5" value="tomatoes" />
+											<img src="/images/exclude/tomatos.jpg" />
+											<p>Tomatoes</p>
+										</label>
+									</li>
+
+									<li class="glide__slide">
+										<label>
+											<input type="radio" name="ex6" value="bacon" />
+											<img src="/images/exclude/bacon.jpg" />
+											<p>Bacon</p>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div class="glide__arrows" data-glide-el="controls">
+								<button
+									class="glide__arrow glide__arrow--left l"
+									data-glide-dir="<"
+								>
+									<i class="material-icons">chevron_left</i>
+								</button>
+								<button
+									class="glide__arrow glide__arrow--right r"
+									data-glide-dir=">"
+								>
+									<i class="material-icons">chevron_right</i>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<button
+						class="btn waves-effect waves-light"
+						type="submit"
+						style="margin-top: -30px;"
+					>
+						Save<i class="material-icons right">send</i>
+					</button>
+				</a>
+			</form>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+		<script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
+		<script>
+			$('.carousel.carousel-slider').carousel({
+				fullWidth: true,
+				indicators: true,
+			});
+		</script>
+		<script src="/js/slider.js"></script>
+	</body>
+</html>
